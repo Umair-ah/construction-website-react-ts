@@ -1,23 +1,30 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { Hero } from "./components/Hero";
-import { About } from "./components/About";
-import { Services } from "./components/Services";
-import { Portfolio } from "./components/Portfolio";
-import { Blog } from "./components/Blog";
-import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { Services } from "./pages/Services";
+import { Portfolio } from "./pages/Portfolio";
+import { Blog } from "./pages/Blog";
+import { Contact } from "./pages/Contact";
 
 export default function App() {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <Portfolio />
-      <Blog />
-      <Contact />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            {/* <Route path="/portfolio" element={<Portfolio />} /> */}
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }

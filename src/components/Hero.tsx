@@ -1,15 +1,9 @@
 import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -32,21 +26,25 @@ export function Hero() {
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
           <Button
-            onClick={() => scrollToSection("contact")}
+            asChild
             className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-6"
             size="lg"
           >
-            احصل على استشارة مجانية
-            <ArrowLeft className="mr-2 h-5 w-5" />
+            <Link to="/contact">
+              احصل على استشارة مجانية
+              <ArrowLeft className="mr-2 h-5 w-5" />
+            </Link>
           </Button>
-          <Button
-            onClick={() => scrollToSection("portfolio")}
+          {/* <Button
+            asChild
             variant="outline"
             className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 px-8 py-6"
             size="lg"
           >
-            شاهد أعمالنا
-          </Button>
+            <Link to="/portfolio">
+              شاهد أعمالنا
+            </Link>
+          </Button> */}
         </div>
 
         {/* Stats */}
